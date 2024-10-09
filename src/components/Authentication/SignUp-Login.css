@@ -1,0 +1,71 @@
+.signup-login-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgb(215, 15, 100);
+}
+.signup-login-container>div{
+    height: 80%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 10px;
+    background-color: white;
+}
+.signup-login-container>div>input{
+    height: 3%;
+    width: 80%;
+    outline: none;
+    border: 1px solid rgb(204, 201, 201);
+    border-radius: 4px;
+    margin: 2%;
+    padding: 1%;
+}
+.signup-login-container>div>button{
+    color: white;
+    background-color: rgb(215, 15, 100);
+    height: 3%;
+    width: 82%;
+    padding: 3%;
+    margin-top: 4%;
+    font-size: 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid  rgb(215, 15, 100);
+}
+.signup-login-container>div>button:hover{
+    background-color: white;
+    color: rgb(215, 15, 100);
+    font-size: 17px;
+    font-weight: 500;
+}
+#file-input{
+    display: none;
+}
+.signup-login-profle-image{
+    height: 180px;
+    width: 180px;
+    border: 1px solid rgb(238, 232, 232);
+    border-radius: 50%;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy0hYSOJIcSZupM28upvTbX8wPxH-u6oovGZ1cKnP9BDbFmeJfymX90sHb1oePZwzun6E&usqp=CAU');
+    background-size: cover;
+}
+.signup-login-container-select-image{
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 1%;
+    margin-bottom: 6%;
+}
+.signup-login-redirect-para{
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}

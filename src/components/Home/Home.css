@@ -1,0 +1,293 @@
+.navbar{
+    height: 6vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.logo-side{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-container{
+   height: 48px;
+   width: 130px;
+}
+.logo-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.nav-btns{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-btns>div{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;   
+}
+.signup-btn{
+    color: white;
+    background-color: rgb(215, 15, 100);
+    height: 32px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: transparent;
+}
+.login-btn{
+    color: black;
+    background-color: white;
+    height: 32px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup-btn:hover{
+    height: 36px;
+    width: 106px;
+}
+.lang-btn{
+    color: black;
+    background-color: white;
+    height: 32px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 8px;
+    border-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lang-btn>i{
+    height: 32px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-btn:hover, .lang-btn:hover{
+    height: 36px;
+    width: 106px;
+    background-color:  rgb(241, 237, 237);
+}
+.cart-btn{
+    height: 50px;
+    width: 50px;
+    font-size: 22px;
+    color:  rgb(215, 15, 100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.cart-btn:hover{
+    background-color: rgb(241, 237, 237);
+}
+.hero-section{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.hero-sec-1{
+    height: 100%;
+    width: 55%;
+    color: rgb(66, 65, 65);
+    font-size: 46px;
+    font-weight: 400;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 12%;
+}
+.input-box{
+    height: 6%;
+    width: 80%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+}
+.input-box>input{
+    height: 100%;
+    width: 84%;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid rgb(221, 217, 217);
+}
+.input-box>button{
+    height: 100%;
+    width: 14%;
+    border-radius: 8px;
+    border: 1px solid rgb(215, 15, 100);
+    background-color:  rgb(215, 15, 100);
+    color: white;
+    font-size: 16px;
+}
+.hero-sec-2{
+    height: 100%;
+    width: 45%;
+}
+.hero-sec-2>img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.hero-sec-part-2{
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.hero-sec-part-2>p{
+    font-size: 38px;
+    font-weight: 600;
+    color: rgb(41, 39, 39);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 9.5%;
+    padding-bottom: 1%;
+}
+.hero-sec-part-2>div{
+    height: 94%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    background-image: url('https://images.deliveryhero.io/image/foodpanda/home-vendor-pk.jpg?width=1264&height=808.96');
+    background-size: cover;
+}
+.hero-sec-part-2-overlap-box{
+    height: 50%;
+    width: 30%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 18px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 1.5%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 10%;
+    margin-bottom: 2%;
+}
+.hero-sec-part-2-overlap-box>button{
+    height: 16%;
+    width: 20%;
+    border-radius: 8px;
+    border: 1px solid rgb(215, 15, 100);
+    background-color:  rgb(215, 15, 100);
+    color: white;
+    padding: 1%;
+    font-size: 16px;
+}
+.hero-sec-part-3{
+    width: 100%;
+    height: auto;
+}
+.hero-sec-part-3>p{
+    font-size: 38px;
+    font-weight: 600;
+    color: rgb(41, 39, 39);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 9.5%;
+    margin-top: 4vh;
+}
+.hero-sec-part-3>div{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.hero-sec-part-3>div>div{
+    height: 22vh;
+    width: 18%;
+    border-color: transparent;
+    border-radius: 10px;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnqZa2TnDqax1mLDn6O5DJIHi7jQjPAooj55XzNFVepslcqIqXrMnaqCT7OfbedLxNNQU&usqp=CAU');
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 1.5%;
+}
+.hero-sec-part-3>div>div>div{
+    height: 15%;
+    width: 22%;
+    border-radius: 8px;
+    margin-left:2%;
+    margin-bottom:2%;
+    padding: 1%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: white;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer{
+    height: 7vh;
+    width: 97.5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgb(204, 197, 197);
+    margin: 2%;
+}
+.right-footer, .left-footer{
+    height: 100%;
+    width: 6%;
+    display: flex;
+    flex-direction: row;
+}
+.right-footer>div{
+   height: 100%;
+   width: 50%; 
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   font-size: 16px;
+   color: black;
+   border-radius: 50%;
+}
+.left-footer>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+

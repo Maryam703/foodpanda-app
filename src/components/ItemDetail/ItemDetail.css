@@ -1,0 +1,90 @@
+.item-detail-container{
+    height: 64vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+}
+.item-detail-container>div{
+    height: 100%;
+    width: 40%;
+    border: 1px solid rgb(218, 216, 216);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item-detail-left-side, .item-detail-right-side{
+    height: 90%;
+    width: 70%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.item-detail-left-side>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.item-detail-right-side-title{
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 2%;
+}
+.item-detail-right-side-cetagory{
+    font-size: 18px;
+    color: rgb(97, 95, 95);
+    margin-top: 2%;
+}
+.item-detail-right-side-description{
+    font-size: 14px;
+    color: rgb(97, 95, 95);
+    margin-top: 2%;
+}
+.item-detail-right-side-quantity{
+    height: 4%;
+    width: 22%;
+    font-size: 14px;
+    color: black;
+    margin-top: 2%;
+}
+.item-detail-right-side-time, .item-detail-right-side-dc{
+    font-size: 14px;
+    color: rgb(61, 60, 60);
+    margin-top: 4%;
+}
+.item-detail-right-side>button{
+    height: 6%;
+    width: 22%;
+    padding: 0.5%;
+    margin-left: 70%;
+    border-radius: 8px;
+    border: 1px solid rgb(215, 15, 100);
+    background-color:  rgb(215, 15, 100);
+    color: white;
+    font-size: 16px;
+    margin-top: 24%;
+}
+.item-detail-right-side>button:hover{
+    color: rgb(215, 15, 100);
+    background-color:  white;
+    font-weight: 400;
+}
+.item-detail-related-items{
+    font-size: 38px;
+    font-weight: 600;
+    color: rgb(215, 15, 100);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 9.5%;
+    padding-bottom: 1%;
+    margin-top: 3%;
+}
+.item-detail-related-items-container{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2vh;
+}
