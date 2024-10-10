@@ -15,7 +15,7 @@ export default function Login() {
                 <input required type='email' value={email} placeholder='Enter your email:' onChange={(e) => setEmail(e.target.value)} />
                 <input required type='password' value={password} placeholder='Enter your password:' onChange={(e) => setPassword(e.target.value)} />
 
-                <button>Login Up</button>
+                <button>Login</button>
 
                 <p className='signup-login-redirect-para'>Don't have an account? <Link to="/login">SignUp here!</Link></p>
             </div>

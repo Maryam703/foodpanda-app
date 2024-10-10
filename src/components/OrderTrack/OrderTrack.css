@@ -1,0 +1,155 @@
+.order-track-contaier{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.order-track-inner-contaier{
+    height: 86vh;
+    width: 28%;
+    background-color: rgb(245, 241, 241);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+.order-track-heading{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4%;
+    margin-bottom: 10%;
+}
+.order-track-heading>b{
+    font-size: 28px;
+    font-weight: 600;
+    color: rgb(41, 39, 39);
+}
+.order-track-heading>div{
+    font-size: 18px;
+    font-weight: 500;
+    color:  rgb(215, 15, 100);
+}
+.order-track-time-update{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.order-track-time-update>b{
+    font-size: 22px;
+}
+.order-track-delivery-update{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.order-track-delivery-update{
+    height: 180px;
+    width: 180px;
+}
+.order-track-delivery-update>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.order-track-loader-container{
+    padding: 5%;
+}
+.order-track-status-updates{
+    width: 70%;
+}
+.order-track-contact-rider{
+    height: 8%;
+    width: 74%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgb(199, 198, 198);
+    border-radius: 4px;
+    margin-top: 7%;
+    padding: 2%;
+}
+.order-track-contact-rider-dp{
+    height: 54px;
+    width: 54px;
+    border-radius: 50%;
+}
+.order-track-contact-rider-dp>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.order-track-contact-rider-contact{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 16px;
+    margin-left: 5%;
+}
+.order-track-contact-rider>i{
+    font-size: 24px;
+    color:  rgb(215, 15, 100);
+}
+.order-track-delivery-details{
+    height: 25%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid rgb(199, 198, 198);
+    border-radius: 4px;
+    margin-top: 2%;
+    padding: 4%;
+    margin-bottom: 2%;
+}
+.order-track-delivery-details--1{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.order-track-delivery-details--1>i{
+    font-size: 22px;
+    color:  rgb(215, 15, 100);
+}
+.order-track-delivery-details--1>b{
+    width: 84%;
+    padding: 2%;
+    font-size: 18px;
+}
+.order-track-delivery-details--1>div{
+    font-size: 16px;
+    color:  rgb(215, 15, 100);
+}
+.order-track-delivery-details--2{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 5%;
+}
+.order-track-delivery-details--2>b{
+    margin-top: 8%;
+}

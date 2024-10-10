@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import "./Shop.css"
-import ShopCard from '../ShopCard/ShopCard'
+import "./Restaurants.css"
+import RestaurantCard from '../RestaurantCard/RestaurantCard'
 
-export default function Shop() {
-  const [shops, setShops] = useState([
+export default function Restaurant() {
+  const [restaurants, setRestaurants] = useState([
     {
       id: 1,
       name: "Super Ice Point",
@@ -88,22 +88,22 @@ export default function Shop() {
 
   return (
     <div>
-      <div className='shop-search-bar'>
-        <input placeholder='Search for a shop' />
+      <div className='restaurant-search-bar'>
+        <input placeholder='Search for a Restaurants' />
         <button>Search</button>
       </div>
 
-      <div className='shop-container--box'>
-        {shops && shops.map((shop) => {
+      <div className='restaurant-container--box'>
+        {restaurants && restaurants.map((rest) => {
           return (
-            <ShopCard
-              key={shop.id}
-              id={shop.id}
-              name={shop.name}
-              image={shop.image}
-              cetagory={shop.cetagory}
-              estimatedTime={shop.estimatedTime}
-              estimatedDC={shop.estimatedDC}
+            <RestaurantCard
+              key={rest.id}
+              id={rest.id}
+              name={rest.name}
+              image={rest.image}
+              cetagory={rest.cetagory}
+              estimatedTime={rest.estimatedTime}
+              estimatedDC={rest.estimatedDC}
             />
           )
         })}

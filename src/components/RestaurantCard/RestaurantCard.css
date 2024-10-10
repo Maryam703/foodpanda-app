@@ -1,4 +1,4 @@
-.shop-card {
+.restaurant-card {
     height: 28vh;
     width: 18%;
     border: 1px solid rgb(199, 198, 198);
@@ -6,20 +6,20 @@
     margin: 1.5%;
     text-decoration: none;
 }
-.shop-card-image{
+.restaurant-card-image{
     height: 74%;
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.shop-card-image>img{
+.restaurant-card-image>img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.shop-card-title{
+.restaurant-card-title{
     height: 5%;
     width: 100%;
     font-size: 16px;
@@ -28,7 +28,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 1%;
 }
-.shop-card-category{
+.restaurant-card-category{
     height: 5%;
     width: 100%;
     font-size: 14px;
@@ -36,7 +36,7 @@
     padding: 1%;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.shop-card-estimated-time-dc{
+.restaurant-card-estimated-time-dc{
     height: 5%;
     width: 100%;
     font-size: 12px;

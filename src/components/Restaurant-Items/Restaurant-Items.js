@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import "./ShopItems.css"
+import "./RestaurantItems.css"
 import FoodItemCard from '../FoodItemCard/FoodItemCard'
 
-export default function ShopItems() {
+export default function RestaurantItems() {
     const [foodItems, setFoodItems] = useState([
     {
       id: 1,
