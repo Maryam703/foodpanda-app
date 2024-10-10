@@ -17,7 +17,7 @@ export default function Login() {
 
                 <button>Login</button>
 
-                <p className='signup-login-redirect-para'>Don't have an account? <Link to="/login">SignUp here!</Link></p>
+                <p className='signup-login-redirect-para'>Don't have an account? <Link to="/signUp">SignUp here!</Link></p>
             </div>
         </div>
     )

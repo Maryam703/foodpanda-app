@@ -1,8 +1,14 @@
 import React from 'react';
-import "./Home.css";
-import { Link } from 'react-router-dom';
+import "./About.css";
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Home() {
+export default function About() {
+    const navigate = useNavigate()
+
+    const searchRestrauntHandler = () => {
+        navigate("/")
+    }
+    
     return (
         <>
             <div className="navbar">
@@ -53,7 +59,7 @@ export default function Home() {
                         Interested? Let's start our partnership today!
                         <br />
                         <br />
-                        <button>Get Started</button>
+                        <button onClick={searchRestrauntHandler}>Get Started</button>
                     </div>
                 </div>
             </div>

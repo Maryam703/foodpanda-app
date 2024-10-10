@@ -1,14 +1,12 @@
 import './App.css';
 import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Login from "./components/Authentication/Login"
-import OrderTrack from './components/OrderTrack/OrderTrack';
-import Loader from './components/Loader/Loader';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <OrderTrack/>
+    <Header />
+    <Outlet />
     </>
   );
 }

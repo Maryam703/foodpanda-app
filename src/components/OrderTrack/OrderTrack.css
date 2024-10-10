@@ -35,6 +35,7 @@
     font-size: 18px;
     font-weight: 500;
     color:  rgb(215, 15, 100);
+    cursor: pointer;
 }
 .order-track-time-update{
     height: 10%;

@@ -1,14 +1,20 @@
 import React from 'react';
 import "./OrderTrack.css"
 import Loader from '../Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 function OrderTrack() {
+    const navigate = useNavigate();
+
+    const helpHandler = () => {
+        navigate("/about")
+    }
     return (
         <div className='order-track-contaier'>
             <div className='order-track-inner-contaier'>
                 <div className='order-track-heading'>
                     <b>Your Order</b>
-                    <div>Help</div>
+                    <div onClick={helpHandler}>Help</div>
                 </div>
 
                 <div className='order-track-time-update'>

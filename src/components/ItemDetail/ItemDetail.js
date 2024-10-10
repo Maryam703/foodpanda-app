@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import "./ItemDetail.css";
 import FoodItemCard from '../FoodItemCard/FoodItemCard';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function ItemDetail() {
+    const navigate = useNavigate()
     const [foodItems, setFoodItems] = useState([
         {
             id: 2,
@@ -48,6 +50,12 @@ export default function ItemDetail() {
             estimatedDC: "40"
         }
     ])
+    const { id } = useParams()
+    console.log(id)
+
+    const addToCartHandler = () => {
+        navigate("/cart")
+    }
 
     return (
         <>
@@ -71,7 +79,7 @@ export default function ItemDetail() {
                         </select>
                         <div className='item-detail-right-side-time'>Estimated delivery time: 40min</div>
                         <div className='item-detail-right-side-dc'>Estimated delivery charges: Rs40</div>
-                        <button>Order Now</button>
+                        <button onClick={addToCartHandler}>Add to cart</button>
                     </div>
                 </div>
             </div>

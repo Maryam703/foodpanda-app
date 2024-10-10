@@ -39,10 +39,28 @@
     flex-wrap: wrap;
     margin-top: 2vh;
 }
-.shopItem-page-title{
-    color:  rgb(215, 15, 100);
+.shopItem-shop-dp-container{
+    height: 10%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2%;
+    margin-top: 1%;
+}
+.shopItem-shop-dp{
+    height: 100px;
+    width: 100px;
+    border-radius: 20%;
+}
+.shopItem-shop-dp>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20%;
+}
+.shopItem-page-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5%;
 }

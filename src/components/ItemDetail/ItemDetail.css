@@ -26,37 +26,37 @@
     object-fit: cover;
 }
 .item-detail-right-side-title{
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 700;
-    margin-top: 2%;
+    margin-top: 4%;
+    margin-bottom: 4%;
 }
 .item-detail-right-side-cetagory{
-    font-size: 18px;
-    color: rgb(97, 95, 95);
+    font-size: 20px;
+    color: rgb(122, 120, 120);
     margin-top: 2%;
 }
 .item-detail-right-side-description{
-    font-size: 14px;
+    font-size: 17px;
     color: rgb(97, 95, 95);
     margin-top: 2%;
 }
 .item-detail-right-side-quantity{
     height: 4%;
     width: 22%;
-    font-size: 14px;
+    font-size: 16px;
     color: black;
-    margin-top: 2%;
+    margin-top: 8%;
 }
 .item-detail-right-side-time, .item-detail-right-side-dc{
-    font-size: 14px;
+    font-size: 16px;
     color: rgb(61, 60, 60);
     margin-top: 4%;
 }
 .item-detail-right-side>button{
     height: 6%;
-    width: 22%;
+    width: 100%;
     padding: 0.5%;
-    margin-left: 70%;
     border-radius: 8px;
     border: 1px solid rgb(215, 15, 100);
     background-color:  rgb(215, 15, 100);
