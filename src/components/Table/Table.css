@@ -1,0 +1,76 @@
+table, th, td {
+    border: 1px solid rgb(228, 225, 225);
+    border-collapse: collapse;
+}
+table {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+thead {
+  height: 5vh;
+}
+tbody{
+  height: auto;
+}
+th{
+  font-size: 20px;
+  text-align: left;
+  padding: 0.5%;
+}
+td{
+  height: 3vh;
+  font-size: 16px;
+  text-align: left;
+  padding: 0.2%;
+}
+.table-img-container{
+  height: 50px;
+  width: 50px;
+}
+.table-img-container>img{
+  height:100%;
+  width: 100%;
+  object-fit: cover;
+}
+.table-edit-btn{
+  width: 74px;
+  height: 25px;
+  background-color: green;
+  border: 1px solid green;
+  color: whitesmoke;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.table-edit-btn:hover{
+  background-color: white;
+  color: green;
+}
+.table-status-selector{
+  width: auto;
+  height: 25px;
+  background-color: green;
+  border: none;
+  color: whitesmoke;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.table-delete-btn{
+  width: 74px;
+  height: 25px;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 12px;
+}
+.table-delete-btn:hover{
+  background-color:whitesmoke;
+  color: red;
+  font-size: 14px;
+}

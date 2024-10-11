@@ -12,6 +12,8 @@ import ItemDetail from "./components/ItemDetail/ItemDetail"
 import Cart from './components/Cart/Cart';
 import OrderTrack from "./components/OrderTrack/OrderTrack";
 import About from './components/About/About';
+import AddProduct from './components/AddProduct/AddProduct';
+import Orders from './components/Orders/Orders';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,10 +25,12 @@ const router = createBrowserRouter(
     <Route path="" element={<Restaurants />} />
     <Route path="/restaurant/:id" element={<RestaurantItems />} />
     <Route path="/restaurant/:id/food-item/:id" element={<ItemDetail />} />
-
     </Route>
+
     <Route path="/cart" element={<Cart />} />
     <Route path="/track-order" element={<OrderTrack />} />
+    <Route path="/shopkeeper/add-product" element={<AddProduct />} />
+    <Route path="/shopkeeper/orders" element={<Orders />} />
     </>
   )
 )
