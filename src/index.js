@@ -14,11 +14,16 @@ import OrderTrack from "./components/OrderTrack/OrderTrack";
 import About from './components/About/About';
 import AddProduct from './components/AddProduct/AddProduct';
 import Orders from './components/Orders/Orders';
+import SignUpForShop from "./components/Authentication/SignUpForShop";
+import SignUpRider from './components/Authentication/SignUpRider';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
     <Route path="/signup" element={<SignUp />} />
+    <Route path="/signup-shop" element={<SignUpForShop />} />
+    <Route path="/signup-rider" element={<SignUpRider />} />
+
     <Route path="/login" element={<Login />} />
     <Route path="/about" element={<About />} />
     <Route path="/" element={<App />} >
@@ -29,8 +34,9 @@ const router = createBrowserRouter(
 
     <Route path="/cart" element={<Cart />} />
     <Route path="/track-order" element={<OrderTrack />} />
-    <Route path="/shopkeeper/add-product" element={<AddProduct />} />
+
     <Route path="/shopkeeper/orders" element={<Orders />} />
+    <Route path="/shopkeeper/add-product" element={<AddProduct />} />
     </>
   )
 )
