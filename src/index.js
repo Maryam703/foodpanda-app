@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter, createRoutesFromElements, RouterProvider, Route} from "react-router-dom"
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from "react-router-dom"
 import Login from "./components/Authentication/Login";
 import SignUp from "./components/Authentication/SignUp";
 import Restaurants from "./components/Restaurants/Restaurants"
@@ -16,27 +16,37 @@ import AddProduct from './components/AddProduct/AddProduct';
 import Orders from './components/Orders/Orders';
 import SignUpForShop from "./components/Authentication/SignUpForShop";
 import SignUpRider from './components/Authentication/SignUpRider';
+import ProtectedRouteForUser from './components/ProtectedRoutes/ProtectedRouteForUser';
+import ProtectedRouteForShopKeeper from './components/ProtectedRoutes/ProtectedRouteForShopKeeper';
+import ProtectedRouteForRider from './components/ProtectedRoutes/ProtectedRouteForRider';
+import OrdersForRider from './components/OrdersForRider/OrdersForRider';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    <Route path="/signup" element={<SignUp />} />
-    <Route path="/signup-shop" element={<SignUpForShop />} />
-    <Route path="/signup-rider" element={<SignUpRider />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/signup-shop" element={<SignUpForShop />} />
+      <Route path="/signup-rider" element={<SignUpRider />} />
 
-    <Route path="/login" element={<Login />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/" element={<App />} >
-    <Route path="" element={<Restaurants />} />
-    <Route path="/restaurant/:id" element={<RestaurantItems />} />
-    <Route path="/restaurant/:id/food-item/:id" element={<ItemDetail />} />
-    </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/" element={<App />} >
+        <Route path="" element={<Restaurants />} />
+        <Route path="/restaurant/:id" element={<RestaurantItems />} />
+        <Route path="/restaurant/:id/food-item/:id" element={<ItemDetail />} />
+      </Route>
 
-    <Route path="/cart" element={<Cart />} />
-    <Route path="/track-order" element={<OrderTrack />} />
 
-    <Route path="/shopkeeper/orders" element={<Orders />} />
-    <Route path="/shopkeeper/add-product" element={<AddProduct />} />
+        <Route path="/cart" element={<Cart />} />
+    
+        <Route path="/track-order" element={<OrderTrack />} />
+     
+        <Route path="/shopkeeper/orders" element={<Orders />} />
+    
+        <Route path="/shopkeeper/add-product" element={<AddProduct />} />
+     
+        <Route path='/rider/orders' element={<OrdersForRider />} />
+     
     </>
   )
 )
@@ -45,7 +55,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router}>
-    <App />
+      <App />
     </RouterProvider>
   </React.StrictMode>
 );

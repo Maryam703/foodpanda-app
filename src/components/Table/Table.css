@@ -59,18 +59,19 @@ td{
 .table-delete-btn{
   width: 74px;
   height: 25px;
-  background-color: red;
-  border: 1px solid red;
+  color: white;
+  background-color: rgb(215, 15, 100);
+  border: 1px solid  rgb(215, 15, 100);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: whitesmoke;
   font-size: 12px;
 }
 .table-delete-btn:hover{
+  border: 1px solid  rgb(215, 15, 100);
   background-color:whitesmoke;
-  color: red;
+  color:rgb(215, 15, 100);
   font-size: 14px;
 }

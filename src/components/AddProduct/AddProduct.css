@@ -3,12 +3,14 @@
     width: 100%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 .add-product-inner-container{
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     width: 90%;
+    background-color: rgb(238, 235, 235);
 }
 .add-product-header{
     height: 10%;
