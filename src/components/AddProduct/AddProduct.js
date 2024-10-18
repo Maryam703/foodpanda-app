@@ -1,52 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./AddProduct.css"
 import Table from '../Table/Table'
 import Modal from '../Modal/Modal'
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function AddProduct() {
-  const [products, setProducts] = useState([
-    {
-      id: 123456,
-      productName: "Biryani",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvC1pGhW7_BRwnGuBguLE99tfA0faYflekCA&s",
-      totalPrice: 25,
-    },
-    {
-      id: 12345,
-      productName: "Biryani",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvC1pGhW7_BRwnGuBguLE99tfA0faYflekCA&s",
-      totalPrice: 25
-    },
-    {
-      id: 12345,
-      productName: "Biryani",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvC1pGhW7_BRwnGuBguLE99tfA0faYflekCA&s",
-      totalPrice: 25
-    },
-    {
-      id: 12345,
-      productName: "Biryani",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvC1pGhW7_BRwnGuBguLE99tfA0faYflekCA&s",
-      totalPrice: 25
-    }
-  ]);
-  const [showModal, setShowModal] = useState(false)
+  const [productEditable, setProductEditable] = useState(null)
+  const [products, setProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const { shopId } = useParams()
 
-  const tableHeadings = ["Id", "ProductName", "Image", "Price", "Update", "Delete"]
+  useEffect(() => {
+    let fetchingData = async () => {
+      let res = await axios.get(`http://localhost:7000/api/v1/product/get-all-products/${shopId}`);
+      setProducts(res.data.Products)
+    }
+
+    fetchingData()
+  }, [])
+
+  const tableHeadings = ["Id", "ProductName", "Image", "Price", "Category", "Update", "Delete"]
 
   const openModal = () => {
+    setProductEditable(null)
     setShowModal(true)
   }
   const closeModal = () => {
     setShowModal(false)
   }
 
-  const deleteEntry = (Id) => {
-    let filteredProducts = products.filter((product) => product.id !== Id);
-    setProducts(filteredProducts)
+  const deleteEntry = async (productId) => {
+    try {
+      await axios.delete(`http://localhost:7000/api/v1/product/delete-product/${productId}`)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  const updateProduct = (Id) => {
+  const updateProduct = (item) => {
+    setProductEditable(item)
     setShowModal(true)
   }
 
@@ -69,7 +62,7 @@ export default function AddProduct() {
         </div>
 
       </div>
-      {showModal && <Modal closeModal={closeModal} />}
+      {showModal && <Modal closeModal={closeModal} productEditable={productEditable} />}
     </div>
   )
 }

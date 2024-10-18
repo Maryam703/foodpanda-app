@@ -31,6 +31,13 @@
     margin-top: 4%;
     margin-bottom: 4%;
 }
+.item-detail-right-side-selector{
+    height: 4%;
+    width: 60%;
+    font-size: 16px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
 .item-detail-right-side-cetagory{
     font-size: 20px;
     color: rgb(122, 120, 120);
@@ -40,13 +47,6 @@
     font-size: 17px;
     color: rgb(97, 95, 95);
     margin-top: 2%;
-}
-.item-detail-right-side-quantity{
-    height: 4%;
-    width: 22%;
-    font-size: 16px;
-    color: black;
-    margin-top: 8%;
 }
 .item-detail-right-side-time, .item-detail-right-side-dc{
     font-size: 16px;

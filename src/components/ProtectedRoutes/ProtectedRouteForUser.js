@@ -1,11 +1,10 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function ProtectedRouteForUser({children}) {
-    let user = JSON.parses(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("user"));
     const navigate = useNavigate();
 
-    if (user.role === "user") {
+    if (user.role === ("user" || "admin")) {
         return {children}
     }else{
         navigate("/login")

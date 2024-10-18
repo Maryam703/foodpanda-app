@@ -10,15 +10,17 @@ export default function Table({ tableHeadings, tableData, updateDetails, deleteE
                 {tableHeadings && tableHeadings.map((heading) => { return (<th>{heading}</th>)})}
                 </thead>
                 <tbody>
-                    {tableData && tableData.map((item) => {
+                    {tableData.length > 0 && tableData.map((item) => {
                         return(
                             <tr>
-                            <td>{item.id}</td>
-                            <td>{item.productName}</td>
+                            <td>{item._id}</td>
+                            <td>{item.name}</td>
                             <td>{item.image && <div className='table-img-container'><img src={item.image} alt={item.image} /></div>}</td>
-                            <td>{item.totalPrice}</td>
-                            {updateDetails && <td><button className="table-edit-btn" onClick={()=> updateDetails(item.id)}>Update</button></td>}
+                            <td>{item.price}</td>
+                            {item.category && <td>{item.category}</td>}
+                            {updateDetails && <td><button className="table-edit-btn" onClick={()=> updateDetails(item)}>Update</button></td>}
                             {item.quantity && <td>{item.quantity}</td>}
+                            {item.shopName && <td>{item.shopName}</td>}
                             {item.orderName && <td>{item.orderName}</td>}
                             {item.adress && <td>{item.adress}</td>}
                             {item.instruction && <td>{item.instruction}</td>}

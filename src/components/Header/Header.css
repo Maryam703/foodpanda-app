@@ -23,7 +23,7 @@
     justify-content: space-between;
 }
 .header-icon{
-    margin-right: 22px;
+    margin-left: 28px;
     font-size: 30px;
 }
 .header-btn{
@@ -49,10 +49,18 @@
 }
 .auth-header-right-side{
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-right: 2%;
     padding: 1%;
+}
+.auth-header-right-side>i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    cursor: pointer;
 }
 .auth-header-user-adress{
     font-weight: 500;

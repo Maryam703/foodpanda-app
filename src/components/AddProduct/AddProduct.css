@@ -21,6 +21,9 @@
     justify-content: space-between;
     padding: 2%;
 }
+.add-product-header>h1{
+   font-size: 34px;
+}
 .add-product-header>button{
     height: 32px;
     width: 100px;

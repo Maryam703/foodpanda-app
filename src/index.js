@@ -20,6 +20,8 @@ import ProtectedRouteForUser from './components/ProtectedRoutes/ProtectedRouteFo
 import ProtectedRouteForShopKeeper from './components/ProtectedRoutes/ProtectedRouteForShopKeeper';
 import ProtectedRouteForRider from './components/ProtectedRoutes/ProtectedRouteForRider';
 import OrdersForRider from './components/OrdersForRider/OrdersForRider';
+import UserInfo from './components/UserInfo/UserInfo';
+import ShopkeerDashBoard from "./components/ShopkeeperDashboard/ShopkeeperDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,26 +29,31 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signup-shop" element={<SignUpForShop />} />
       <Route path="/signup-rider" element={<SignUpRider />} />
-
       <Route path="/login" element={<Login />} />
       <Route path="/about" element={<About />} />
+
+      {/* user routes */}
       <Route path="/" element={<App />} >
         <Route path="" element={<Restaurants />} />
         <Route path="/restaurant/:id" element={<RestaurantItems />} />
-        <Route path="/restaurant/:id/food-item/:id" element={<ItemDetail />} />
+        <Route path="/food-item/:id" element={<ItemDetail />} />
+        <Route path="/user-info" element={<UserInfo />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/track-order" element={<OrderTrack />} />
       </Route>
 
+       {/* shopkeeper routes */}
+      <Route path="/shopkeeper-dashboard" element={<ProtectedRouteForShopKeeper><ShopkeerDashBoard /></ProtectedRouteForShopKeeper>} >
+      <Route path="add-products" element={<ProtectedRouteForShopKeeper><AddProduct /></ProtectedRouteForShopKeeper>} />
+      <Route path="orders" element={<ProtectedRouteForShopKeeper><Orders /></ProtectedRouteForShopKeeper>} />
+      <Route path="about" element={<About />} />
+      <Route path="user-info" element={<UserInfo />} />
+      </Route>
 
-        <Route path="/cart" element={<Cart />} />
-    
-        <Route path="/track-order" element={<OrderTrack />} />
-     
-        <Route path="/shopkeeper/orders" element={<Orders />} />
-    
-        <Route path="/shopkeeper/add-product" element={<AddProduct />} />
-     
-        <Route path='/rider/orders' element={<OrdersForRider />} />
-     
+      {/* rider routes */}
+      <Route path='/rider-orders' element={<ProtectedRouteForRider><OrdersForRider /></ProtectedRouteForRider>} />
+
+
     </>
   )
 )

@@ -1,90 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Restaurants.css"
 import RestaurantCard from '../RestaurantCard/RestaurantCard'
+import myAxios from '../../MyAxios'
 
 export default function Restaurant() {
-  const [restaurants, setRestaurants] = useState([
-    {
-      id: 1,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 2,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 3,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 4,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 5,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 6,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 7,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimatedTime: 40,
-      estimatedDC: 40
-    },
-    {
-      id: 6,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 7,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimatedTime: 40,
-      estimatedDC: 40
-    },
-    {
-      id: 6,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 7,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimatedTime: "40",
-      estimatedDC: "40"
+  const [restaurants, setRestaurants] = useState([])
+
+  useEffect(() => {
+    const fetchingData = async() => {
+      try {
+      let res = await myAxios.get("/shop/get-all-shops");
+      let { shops } = res.data;
+      setRestaurants(shops)
+
+      } catch (error) {
+        console.error(error)
+      }
     }
-  ])
+    fetchingData()
+  }, [])
+  
 
   return (
     <div>
@@ -94,16 +29,13 @@ export default function Restaurant() {
       </div>
 
       <div className='restaurant-container--box'>
-        {restaurants && restaurants.map((rest) => {
+        {restaurants.length > 0 && restaurants.map((rest) => {
           return (
             <RestaurantCard
-              key={rest.id}
-              id={rest.id}
+              key={rest._id}
+              id={rest._id}
               name={rest.name}
-              image={rest.image}
-              cetagory={rest.cetagory}
-              estimatedTime={rest.estimatedTime}
-              estimatedDC={rest.estimatedDC}
+              image={rest.avatar}
             />
           )
         })}

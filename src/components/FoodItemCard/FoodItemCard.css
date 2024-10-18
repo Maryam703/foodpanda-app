@@ -19,6 +19,37 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.food-item-card-details-container{
+    width: 98%;
+    height: 24%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.food-item-card-details{
+    display: flex;
+    flex-direction: column;
+}
+.food-item-card-details>div{
+   margin: 5%;
+}
+.food-item-card-add-option{
+    height: 50%;
+    width: 10%;
+    color: rgb(63, 62, 62);
+    font-size: 22px;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 5%;
+   margin-top: 2%;
+}
+.food-item-card-add-option:hover{
+    background-color:  rgb(228, 224, 224);
+    font-size: 24px;
+    border-radius: 50%;
+}
 .food-item-card-title{
     height: 5%;
     width: 100%;

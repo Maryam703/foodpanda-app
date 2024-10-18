@@ -1,78 +1,104 @@
 import React, { useEffect, useState } from 'react';
 import "./Cart.css";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import myAxios from '../../MyAxios';
 
 export default function Cart() {
   const [checkCultery, setCheckCultery] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
-    name: "jwkckwjc",
-    adress: "xxxxxxxxxxxxxx",
-    city: "xxxxxxxxxxxxxx",
-    contact: "xxxxxxxxxxxxxx",
-  })
-  const [subTotal, setSubTotal] = useState(null);
-  const [totalPrice, setTotalPrice] = useState(null);
-  const [cartItems, setCartItems] = useState([
-    {
-    name : "malai boti",
-    price: 25,
-    image : 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg'
-  },
-  {
-    name : "malai boti",
-    price: 25,
-    image : 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg'
-  },
-  {
-    name : "malai boti",
-    price: 25,
-    image : 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg'
-  },
-  {
-    name : "malai boti",
-    price: 25,
-    image : 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg'
-  }
-])
-  const navigate = useNavigate()
+  const [currentUser, setCurrentUser] = useState(null)
+  const [subTotal, setSubTotal] = useState(null); //price of all products
+  const [totalPrice, setTotalPrice] = useState(null); //price inc tax
+  const [cartItems, setCartItems] = useState([]) //item placed in cart
+  const [restaurant, setRestaurant] = useState(null) //get shop to give in order details
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    let products = JSON.parse(localStorage.getItem("products"));
+    setCartItems(products)
+  }, [])
+
+  useEffect(() => {
+    const fetchingData = async () => {
+      try {
+        let res = await myAxios.get("/user/get-user");
+        let { user } = res.data
+        setCurrentUser(user)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchingData()
+  }, [])
+
+  useEffect(() => {
+    const fetchingData = async () => {
+      try {
+        let shopItem = cartItems?.length > 0 && cartItems.find((item) => item.shopId)
+        let shopId = shopItem?.shopId;
+
+        if (shopId) {
+          let res = await myAxios.get(`/shop/get-shop/${shopId}`);
+          let { shop } = res.data;
+          setRestaurant(shop)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchingData()
+  }, [cartItems])
 
   //given charges
   let standardDC = 50;
   let platFormFee = 10;
   let CulteryFee = 50;
 
-  const placeOrderHandler = () => {
-    navigate("/track-order")
-  }
-
   useEffect(() => {
-    //calculating total price
-    const totalPriceOfProducts = cartItems && cartItems.map((item) => item.price).reduce((acc, price) => acc + price , 0);
+    //calculating total price, 0 is the initial value of acc in reduce method
+    const totalPriceOfProducts = cartItems?.length > 0 && cartItems.map((item) => item.price).reduce((acc, price) => acc + price, 0);
     setSubTotal(totalPriceOfProducts)
 
-     //calculating total price with or without cutlery
+    //calculating total price with or without cutlery
     let pricesWithOutCutlery = [subTotal, standardDC, platFormFee]
-    let pricesWithCutlery = [subTotal, standardDC, platFormFee, CulteryFee]
-
     let totalPriceWithOutCutlery = pricesWithOutCutlery.reduce((acc, prices) => acc + prices, 0)
 
+    let pricesWithCutlery = [subTotal, standardDC, platFormFee, CulteryFee]
     let totalPriceWithCutlery = pricesWithCutlery.reduce((acc, prices) => acc + prices, 0)
 
     if (checkCultery) {
       setTotalPrice(totalPriceWithCutlery)
-    }else{
+    } else {
       setTotalPrice(totalPriceWithOutCutlery)
     }
 
-  } , [subTotal, checkCultery])
+  }, [subTotal, checkCultery])
+  console.log(cartItems)
 
-  // let user;
-  // useEffect(() => {
-  //   user = JSON.parse(localStorage.getItem("user"));
-  //   setCurrentUser(user)
-  // } , [])
 
+  const placeOrderHandler = async () => {
+
+    let orderData = {
+      Items: cartItems,
+      shopName: restaurant?.name,
+      orderBy: currentUser?.name,
+      adress: currentUser?.adress,
+      contact: currentUser?.contact,
+      status: "pending"
+    }
+    console.log(orderData)
+
+    try {
+      let res = await myAxios.post("/order/create-new-order", orderData)
+      let order = res.data.createdOrder;
+      console.log(order)
+      navigate("/track-order")
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
   return (
@@ -81,7 +107,7 @@ export default function Cart() {
 
         <div className='cart-header'>
           <b>Cart</b>
-          <p>restaurant name</p>
+          <p>{restaurant?.name}</p>
         </div>
 
         <div className='cart-status-container'>
@@ -97,14 +123,14 @@ export default function Cart() {
 
         {/* cartitems */}
         {cartItems && cartItems.map((item) => {
-          return(
+          return (
             <div className='cart-order-detail'>
-            <div className='cart-order-img-container'>
-              <img src={item.image} alt={item.name} />
+              <div className='cart-order-img-container'>
+                <img src={item?.image} alt={item?.name} />
+              </div>
+              <div className='cart-order-title'>{item?.name}</div>
+              <div className='cart-order-price'>Rs- {item?.price}</div>
             </div>
-            <div className='cart-order-title'>{item.name}</div>
-            <div className='cart-order-price'>Rs- {item.price}</div>
-          </div>
           )
         })}
 

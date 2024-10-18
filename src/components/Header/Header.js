@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react'
 import "./Header.css"
 import { useNavigate } from 'react-router-dom'
 
-export default function Header() {
+export default function Header({ currUser }) {
   const navigate = useNavigate()
-  const [currentUser, setCurrentUser] = useState(null);
+  const [cartItems, setCartItems] = useState([])
 
-  let user;
   useEffect(() => {
-    user = JSON.parse(localStorage.getItem("user"))
-    setCurrentUser(user)
-
-  }, [user])
+    let products = JSON.parse(localStorage.getItem("products"))
+    setCartItems(products)
+  }, [])
 
   const signUpHandler = () => {
     navigate("/signUp")
@@ -21,19 +19,30 @@ export default function Header() {
     navigate("/cart")
   }
 
+  const userInfoHandler = () => {
+    navigate("/user-info")
+  }
+
+  const trackigOrderHandler = () => {
+    navigate("/track-order")
+  }
   return (
     <>
       {
-        currentUser !== null ?
+        currUser !== null ?
           <div className='auth-header'>
-            <div className='auth-header-left-side'>
+            <div className='auth-header-left-side' onClick={userInfoHandler}>
               <i className="header-icon fa-solid fa-location-dot" />
               <div>
-                <div className='auth-header-user-adress'>{user.adress}</div>
-                <div className='auth-header-user-city'>{user.city}</div>
+                <div className='auth-header-user-adress'>{currUser?.adress}</div>
+                <div className='auth-header-user-city'>{currUser?.city}</div>
               </div>
             </div>
-            <i className="auth-header-right-side header-icon fa-solid fa-basket-shopping" onClick={goToCartHandler}></i>
+            <div className='auth-header-right-side'>
+              <i className="header-icon fa-solid fa-basket-shopping" onClick={goToCartHandler}></i>
+              <div>{cartItems.length > 0 && cartItems.length}</div>
+              <i className="header-icon fa-solid fa-clock" onClick={trackigOrderHandler}></i>
+            </div>
           </div>
           :
           <div className='header'>

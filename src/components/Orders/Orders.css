@@ -20,6 +20,9 @@
     justify-content: flex-start;
     padding: 2%;
 }
+.orders-header>h1{
+    font-size: 34px;
+ }
 .orders-table-container{
     width: 100%;
     height: auto;

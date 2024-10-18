@@ -1,50 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Orders.css";
 import Table from '../Table/Table';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function Orders() {
-    const [orders, setOrders] = useState([
-        {
-            id: 12345,
-            productName: "Biryani",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvC1pGhW7_BRwnGuBguLE99tfA0faYflekCA&s",
-            totalPrice: 25,
-            quantity: "1kg",
-            orderName: "User Name",
-            adress: "qilla gojran opposite jnaza gah wasu road, MandiBahauddin",
-            instruction: "Must be delicious",
-            Status: "Pending"
-        },
-        {
-            id: 12345,
-            productName: "Biryani",
+    const [orders, setOrders] = useState([])
+    const { shopId } = useParams()
 
-            totalPrice: 25,
-            quantity: "1kg",
-            orderName: "User Name",
-            adress: "qilla gojran opposite jnaza gah wasu road, MandiBahauddin",
-            instruction: "Must be delicious",
-            Status: "Pending"
-        },
-        {
-            id: 12345,
-            productName: "Biryani",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvC1pGhW7_BRwnGuBguLE99tfA0faYflekCA&s",
-            totalPrice: 25,
-            quantity: "1kg",
-            orderName: "User Name",
-            adress: "qilla gojran opposite jnaza gah wasu road, MandiBahauddin",
-            instruction: "Must be delicious",
-            Status: "Pending"
+    useEffect(()=> {
+        let fetchingData = async() => {
+          let res = await axios.get(`http://localhost:7000/api/v1/orders/get-all-orders/${shopId}`);
+          setOrders(res.data.orders)
         }
-    ])
-
-    const tableHeadings = ["Id", "ProductName", "Image", "Price", "Quantity", "Order Name", "Adress", "Instruction", "Status", "Delete"]
+    
+        fetchingData()
+      }, [])
 
     const deleteEntry = (Id) => {
         let filteredOrders = orders.filter((order) => order.id !== Id);
         setOrders(filteredOrders)
     }
+
+    const tableHeadings = ["Id", "ProductName", "Image", "Price", "Quantity", "Order Name", "Adress", "Instruction", "Status", "Delete"]
 
     return (
         <div className='orders-container'>

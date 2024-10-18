@@ -6,6 +6,7 @@ table {
   width: 100%;
   text-align: left;
   cursor: pointer;
+  color: black;
 }
 thead {
   height: 5vh;

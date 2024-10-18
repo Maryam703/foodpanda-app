@@ -1,0 +1,28 @@
+.shopkeeper-dashboard-container{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(245, 241, 241);
+}
+.shopkeeper-dashboard-icon-container{
+    height: 10%;
+    width: 98%;
+    font-size: 34px;
+}
+.shopkeeper-dashboard-icon-container > i{
+   margin-top: 2%;
+   margin-left: 2%;
+   cursor: pointer;
+   z-index: 10;
+}
+.shopkeeper-dashboard-details-container{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
+    color:  rgb(215, 15, 100);;
+}

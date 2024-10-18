@@ -1,12 +1,17 @@
-import React from 'react'
+import { useEffect , useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function ProtectedRouteForShopKeeper({children}) {
-    let user = JSON.parses(localStorage.getItem("user"));
     const navigate = useNavigate();
+    const [currUser , setCurrUser ] = useState(null)
 
-    if (user.role === "shopKeeper") {
-        return {children}
+    useEffect(() => { 
+        let user = JSON.parse(localStorage.getItem("user"));
+        setCurrUser(user)
+    }, [])
+
+    if (currUser?.role === ("shopkeeper" || "admin")) {
+        return children
     }else{
         navigate("/login")
     }

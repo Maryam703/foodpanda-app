@@ -1,67 +1,41 @@
-import React, { useState } from 'react'
-import "./Restaurant-Items.css"
+import React, { useEffect, useState } from 'react'
+import "./Restaurant-Items.css";
 import FoodItemCard from '../FoodItemCard/FoodItemCard'
+import { useParams } from 'react-router-dom';
+import myAxios from '../../MyAxios';
 
 export default function RestaurantItems() {
-    const [foodItems, setFoodItems] = useState([
-    {
-      id: 1,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40,
-    },
-    {
-      id: 2,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40,
-    },
-    {
-      id: 3,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40,
-    },
-    {
-      id: 4,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40,
-    },
-    {
-      id: 5,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40,
-    },
-    {
-      id: 6,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    },
-    {
-      id: 7,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimatedTime: 40,
-      estimatedDC: 40
-    },
-    {
-      id: 6,
-      name: "Super Ice Point",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8LVQp7_3-8xzCMPCUXwK37q0-NdYFpoF1A&s",
-      cetagory: "Ice Bar",
-      estimated_DC: 40
-    }
-  ])
+  const [shop, setShop] = useState(null)
+    const [foodItems, setFoodItems] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+      const fetchingData = async() => {
+        try {
+        let res = await myAxios.get(`/shop/get-shop/${id}`);
+        let { shop } = res.data;
+        setShop(shop)
+  
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      fetchingData()
+    }, [id])
+
+    useEffect(() => {
+      const fetchingData = async() => {
+        try {
+        let res = await myAxios.get(`/product/get-all-products/${id}`);
+        let { products } = res.data;
+        setFoodItems(products)
+  
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      fetchingData()
+    }, [id])
 
   return (
     <div>
@@ -71,22 +45,20 @@ export default function RestaurantItems() {
       </div>
 
       <div className='shopItem-shop-dp-container'>
-        <div className='shopItem-shop-dp'><img src='https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141353.jpg' alt='restaurant-image' /></div>
+        <div className='shopItem-shop-dp'><img src={shop?.avatar} alt={shop?.name} /></div>
       </div>
 
-      <h1 className='shopItem-page-title'>Super Ice Point</h1>
+      <h1 className='shopItem-page-title'>{shop?.name}</h1>
 
       <div className='shop-item-container--box'>
-        {foodItems && foodItems.map((item) => {
+        {foodItems.length > 0 && foodItems.map((item) => {
           return (
             <FoodItemCard
-              key={item.id}
-              id={item.id}
+              key={item._id}
+              id={item._id}
               name={item.name}
               image={item.image}
               cetagory={item.cetagory}
-              estimatedTime={item.estimatedTime}
-              estimatedDC={item.estimatedDC}
             />
           )
         })}
