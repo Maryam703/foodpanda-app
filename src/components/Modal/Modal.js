@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import "./Modal.css"
 import { Form } from 'react-router-dom';
-import axios from 'axios';
+import myAxios from '../../MyAxios';
+import ApiLoader from '../../ApiLoader/ApiLoader';
 
 export default function Modal({ closeModal, productEditable }) {
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Breakfast");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(null);
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false)
   const formData = new FormData()
 
   useEffect(() => {
@@ -21,12 +23,6 @@ export default function Modal({ closeModal, productEditable }) {
     }
   },[productEditable])
 
-  let editableData = {
-    name,
-    description,
-    price
-  }
-
   formData.append("name", name)
   formData.append("image", image)
   formData.append("price", price)
@@ -36,21 +32,30 @@ export default function Modal({ closeModal, productEditable }) {
   const SubmitFormHandler = async (e) => {
     e.preventDefault();
 
-    try {
-      if (productEditable) {
-        await axios.patch(`http://localhost:7000/api/v1/product/update-product/${productEditable.id}`, editableData)
-
-      } else {
-        await axios.post("http://localhost:7000/api/v1/product/create-new-product", formData, { headers: { "Content-Type": "multipart/form-data" } })
-
+    if (productEditable) {
+      try {
+        setLoading(true)
+        await myAxios.patch(`/product/update-product/${productEditable?._id}`, formData, { headers: { "Content-Type": "multipart/form-data" } })
+      } catch (error) {
+        console.error(error)
       }
-    } catch (error) {
+   
+    } else {
+     try {
+      setLoading(true)
+      await myAxios.post("/product/create-new-product", formData, { headers: { "Content-Type": "multipart/form-data" } })
+     } catch (error) {
       console.error(error)
+     }
     }
+
+    setLoading(false)
     closeModal();
   }
 
   return (
+    <>
+    {loading && <ApiLoader />}
     <Form className="modal-container" onSubmit={SubmitFormHandler}>
       <div className="modal-box">
 
@@ -93,11 +98,11 @@ export default function Modal({ closeModal, productEditable }) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-            <option>Drink</option>
-            <option>Others</option>
+            <option defaultValue="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="drink">Drink</option>
+            <option value="others">Others</option>
           </select>
         </div>
         <div className="modal-input-box">
@@ -116,7 +121,6 @@ export default function Modal({ closeModal, productEditable }) {
           <input
             type="file"
             name="image"
-            required
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])}
           />
@@ -129,5 +133,6 @@ export default function Modal({ closeModal, productEditable }) {
         </div>
       </div>
     </Form>
+    </>
   )
 }

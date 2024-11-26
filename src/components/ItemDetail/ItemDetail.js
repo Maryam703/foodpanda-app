@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import "./ItemDetail.css";
 import FoodItemCard from '../FoodItemCard/FoodItemCard';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 import myAxios from '../../MyAxios';
 
 export default function ItemDetail() {
     const [itemDetail, setItemDetail] = useState(null);
     const [foodItems, setFoodItems] = useState([]);
     const [selectedQuantity, setSelectedQuantity] = useState("single serving")
+    const navigate = useNavigate()
     const { id } = useParams();
-    console.log(itemDetail)
 
     useEffect(() => {
         const fetchingData = async () => {
             try {
-                let res = await myAxios.get(`/product/get-product/${id}`)
+                let res = await axios.get(`http://localhost:9000/api/v1/product/get-product/${id}`)
                 let { product } = res.data;
                 setItemDetail(product)
 
@@ -26,6 +27,8 @@ export default function ItemDetail() {
     }, [id])
 
     useEffect(() => {
+        if(!itemDetail?.shopId) return;
+
         const fetchingData = async () => {
             try {
                 let res = await myAxios.get(`/product/get-all-products/${itemDetail?.shopId}`)
@@ -42,6 +45,7 @@ export default function ItemDetail() {
 
     const addToCartHandler = () => {
         let products = JSON.parse(localStorage.getItem("products"));
+        let user = JSON.parse(localStorage.getItem("user"));
 
         let updatedPrice;
         if (selectedQuantity === "2 servings") {
@@ -62,6 +66,12 @@ export default function ItemDetail() {
             let products = []
             products.push({ ...itemDetail, price: updatedPrice, quantity: selectedQuantity });
             localStorage.setItem("products", JSON.stringify(products))
+        }
+
+        if (user) {
+            navigate("/cart")
+        } else {
+            navigate("/login")
         }
     }
 

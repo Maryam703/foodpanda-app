@@ -7,12 +7,6 @@ function Loader() {
             <div class="loader">
                 <div class="color-line"></div>
             </div>
-            {/* <div class="loader">
-                <div class="color-line"></div>
-            </div>
-            <div class="loader">
-                <div class="color-line"></div>
-            </div> */}
         </div>
     )
 }

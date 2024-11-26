@@ -1,11 +1,17 @@
 import { useNavigate } from 'react-router-dom';
+import {useEffect, useState } from "react"
 
 function ProtectedRouteForRider({children}) {
-    let user = JSON.parse(localStorage.getItem("user"));
     const navigate = useNavigate();
+    const [currUser , setCurrUser ] = useState(null)
 
-    if (user.role === ("rider" || "admin")) {
-        return {children}
+    useEffect(() => { 
+        let user = JSON.parse(localStorage.getItem("user"));
+        setCurrUser(user)
+    }, [])
+
+    if (currUser?.role === "rider") {
+        return children
     }else{
         navigate("/login")
     }

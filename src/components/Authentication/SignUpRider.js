@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, useNavigate } from 'react-router-dom';
 import "./SignUp-Login.css";
-import axios from 'axios';
+import myAxios from '../../MyAxios';
 
 function SinUpRider() {
     const [name, setName] = useState("");
@@ -20,6 +20,7 @@ function SinUpRider() {
 
     const signUpHandler = async(e) => {
         e.preventDefault();
+        console.log("working")
 
         const formData = new FormData();
 
@@ -33,14 +34,17 @@ function SinUpRider() {
         formData.append("role", "rider")
     
         try {
-            let res = await axios.post("http://localhost:7000/api/v1/user/sign-up", formData, {
+            let res = await myAxios.post("/user/sign-up", formData, {
             headers: {
               "Content-Type": "multipart/form-data"
             }
           });
-    
-          if (res.statusCode === 200) {
-            navigate("/rider-orders")
+
+          let { user } = res.data;
+         
+          if (user) {
+            localStorage.setItem("user", JSON.stringify(user))
+            navigate("/rider-dashboard")
           }
         } catch (error) {
           console.error(error)
@@ -52,7 +56,7 @@ function SinUpRider() {
             <div>
                 <div className='signup-login-profle-image'></div>
                 <p className='signup-login-container-select-image' onClick={selectFileHandler}>Select yor profile picture here</p>
-                <input id='file-input' ref={inputFile} required name="avatar" type='file' value={avatar} onChange={(e) => setAvatar(e.target.files[0])} />
+                <input id='file-input' ref={inputFile} name="avatar" type='file' onChange={(e) => setAvatar(e.target.files[0])} />
                 <input required type='text' value={name} placeholder='Enter restaurant name:' onChange={(e) => setName(e.target.value)} />
                 <input required type='email' value={email} placeholder='Enter a valid email:' onChange={(e) => setEmail(e.target.value)} />
                 <input required type='text' value={adress} placeholder='Enter complete adress:' onChange={(e) => setAdress(e.target.value)} />

@@ -2,18 +2,22 @@ import { useEffect , useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function ProtectedRouteForShopKeeper({children}) {
+    const [currUser , setCurrUser ] = useState(null);
     const navigate = useNavigate();
-    const [currUser , setCurrUser ] = useState(null)
+    let user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => { 
-        let user = JSON.parse(localStorage.getItem("user"));
+        if (user?.role !== "shopadmin") {
+            navigate("/login")
+        }
+
         setCurrUser(user)
     }, [])
 
-    if (currUser?.role === ("shopkeeper" || "admin")) {
-        return children
+    if (currUser?.role === "shopadmin") {
+        return children;
     }else{
-        navigate("/login")
+        return null
     }
 }
 

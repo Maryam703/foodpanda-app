@@ -1,5 +1,5 @@
 .user-info-container{
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -9,7 +9,7 @@
 .user-info-inner-container{
     height: 90%;
     width: 26%;
-    background-color: rgb(245, 241, 241);
+    background-color: white;
     padding: 2%;
     display: flex;
     flex-direction: column;
@@ -32,12 +32,19 @@
     height: 30%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.user-info-update-image-container{
+    width: 60%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
 .user-info-image-container{
-    height: 200px;
-    width : 200px;
+    height: 220px;
+    width : 220px;
     border: 1PX solid rgb(207, 206, 206);
     border-radius: 50%;
 }
@@ -55,6 +62,7 @@
     align-items: center;
     justify-content: center;
     font-size: 18px;
+    margin-top: 10%;
 }
 .user-info-inner-container-3>div{
     height: 10%;
@@ -64,6 +72,31 @@
     margin-top: 3%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     border-bottom: 1px solid rgb(221, 218, 218);
+}
+.user-info-chunk-container{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.user-info-chunk-container>label{
+   margin-right: 5%;
+}
+.user-info-chunk{
+    color: black;
+    font-size: 16px;
+    font-weight: 300;
+}
+.input{
+    outline: none;
+    border: none;
+}
+.profile-icon{
+    font-size: 22px;
+}
+#input-file-avatar{
+    display: none;
 }

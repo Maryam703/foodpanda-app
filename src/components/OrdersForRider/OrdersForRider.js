@@ -1,48 +1,68 @@
 import React, { useEffect, useState } from 'react';
 import "./OrdersForRider.css";
 import Table from '../Table/Table';
-import axios from 'axios';
+import myAxios from '../../MyAxios';
+import ApiLoader from '../../ApiLoader/ApiLoader';
 
 export default function OrdersForRider() {
     const [orders, setOrders] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [reload, setReload] = useState(false)
 
     useEffect(() => {
         let fetchingData = async() => {
             try {
-                let res = await axios.get("http://localhost:7000/api/v1/order/get-all-orders");
-                let orders = res.data.orders
-                setOrders(orders)
+                setLoading(true)
+                let res = await myAxios.get("/order/get-all-orders");
+                let { orders } = res.data;
+                let riderOrders = orders.filter((order) => order.riderId !== null)
+
+                setOrders(riderOrders)
             } catch (error) {
                 console.error(error)
             }
+            setLoading(false)
+            setReload(false)
         }
         fetchingData()
-    }, [])
-   
-    const deleteEntry = (Id) => {
-        let filteredOrders = orders.filter((order) => order.id !== Id);
-        setOrders(filteredOrders)
+    }, [reload])
+
+    const completeOrderHandler = async(itemId) => {
+        try {
+            const dataForUpdate = {
+                status: "completed"
+            }
+            let res = await myAxios.patch(`/order/update-order/${itemId}`, dataForUpdate);
+            let { updatedOrder } = res.data;
+            console.log(updatedOrder)
+        } catch (error) {
+            console.error(error)
+        }
+        setReload(true)
     }
 
-    const tableHeadings = ["Id", "ProductName", "Image", "Price", "Quantity","RestaurantName","Order Name", "Adress", "Instruction", "Status", "Delete"]
-
+    const tableHeadings = ["Id", "Shop Name", "Order Name",  "Adress", "Contact", "Price", "Order Details", "Status"]
+    
     return (
-        <div className='orders-container'>
-            <div className='orders-inner-container'>
+        <>
+        {loading && <ApiLoader/>}
+        <div className='rider-order-container'>
+            <div className='rider-order-inner-container'>
 
-                <div className='orders-header'>
-                    <h1>Orders</h1>
+                <div className='rider-order-header'>
+                    <h1>Your Orders</h1>
                 </div>
 
-                <div className='orders-table-container'>
+                <div className='rider-order-table-container'>
                     <Table
                         tableHeadings={tableHeadings}
                         tableData={orders}
-                        deleteEntry={deleteEntry}
+                        completeOrderHandler = {completeOrderHandler}
                     />
                 </div>
 
             </div>
         </div>
+        </>
     )
 }

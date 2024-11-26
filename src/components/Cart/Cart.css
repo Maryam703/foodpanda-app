@@ -1,5 +1,5 @@
 .cart-container{
-    height: 100vh;
+    height: auto;
     width: 100%;
     display: flex;
     align-items: center;
@@ -179,6 +179,7 @@
     width: 20%;
     padding: 1.5%;
     margin-top: 2%;
+    margin-bottom: 2%;
     font-size: 16px;
     font-weight: 500;
     border-radius: 4px;
@@ -190,4 +191,9 @@
 .cart-place-order-button>button:hover{
     background-color: white;
     color: rgb(215, 15, 100);
+}
+.cart-empty-container{
+   font-size: 32px;
+   font-weight: 400;
+   font-family: Arial, Helvetica, sans-serif;
 }

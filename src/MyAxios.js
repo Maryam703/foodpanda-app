@@ -1,10 +1,13 @@
 import axios from 'axios';
 
-const myAxios = axios.create({baseURL:"http://localhost:7000/api/v1"})
+const myAxios = axios.create({baseURL:"http://localhost:8000/api/v1"})
 // Add a request interceptor
 myAxios.interceptors.request.use(function (config) {
-    const user = JSON.parse(localStorage.getItem("user"))
-    config.headers.Authorization = user.accessToken;
+    let user = JSON.parse(localStorage.getItem("user"))
+
+    if(user && user?.accessToken){
+      config.headers.Authorization = `Bearer ${user?.accessToken}`;    
+    }
 
     return config;
 });

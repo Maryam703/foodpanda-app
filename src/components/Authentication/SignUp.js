@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import "./SignUp-Login.css";
 import { Form, Link, useNavigate } from 'react-router-dom';
-import axios from "axios"
+import myAxios from '../../MyAxios';
+import ApiLoader from "../../ApiLoader/ApiLoader.js"
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ function SignUp() {
   const [city, setCity] = useState("");
   const [contact, setContact] = useState("");
   const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false)
   const inputFile = useRef();
   const navigate = useNavigate()
 
@@ -19,6 +21,7 @@ function SignUp() {
   }
 
   const signUpHandler = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const formData = new FormData();
@@ -33,21 +36,27 @@ function SignUp() {
     formData.append("role", "user")
 
     try {
-        let res = await axios.post("http://localhost:7000/api/v1/user/sign-up", formData, {
+        let res = await myAxios.post("/user/sign-up", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       });
 
-      if (res.statusCode === 200) {
+      let { user } = res.data
+
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user))
         navigate("/")
       }
     } catch (error) {
       console.error(error)
     }
+    setLoading(false)
   }
 
   return (
+    <>
+    {loading && <ApiLoader />}
     <Form className='signup-login-container' onSubmit={signUpHandler}>
       <div>
         <div className='signup-login-profle-image'></div>
@@ -65,6 +74,7 @@ function SignUp() {
         <p className='signup-login-redirect-para'>Already have an account? <Link to="/login">Login here!</Link></p>
       </div>
     </Form>
+    </>
   )
 }
 

@@ -2,25 +2,36 @@ import React, { useEffect, useState } from 'react'
 import "./AddProduct.css"
 import Table from '../Table/Table'
 import Modal from '../Modal/Modal'
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import myAxios from '../../MyAxios';
+import ApiLoader from '../../ApiLoader/ApiLoader';
 
 export default function AddProduct() {
   const [productEditable, setProductEditable] = useState(null)
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const { shopId } = useParams()
+  const [loading, setLoading] = useState(false);
+  const [reload, setReload] = useState(false)
+  const { id } = useParams();
 
   useEffect(() => {
     let fetchingData = async () => {
-      let res = await axios.get(`http://localhost:7000/api/v1/product/get-all-products/${shopId}`);
-      setProducts(res.data.Products)
+      setLoading(true)
+      try {
+        let res = await myAxios.get(`/product/get-all-products/${id}`);
+        let { products } = res.data;
+        setProducts(products)
+      } catch (error) {
+        console.error(error)
+      }
+      setLoading(false)
+      setReload(false)
     }
 
     fetchingData()
-  }, [])
+  }, [id, reload])
 
-  const tableHeadings = ["Id", "ProductName", "Image", "Price", "Category", "Update", "Delete"]
+  const tableHeadings = ["Id", "ProductName", "Image", "Category", "Price", "Update", "Delete"]
 
   const openModal = () => {
     setProductEditable(null)
@@ -28,14 +39,18 @@ export default function AddProduct() {
   }
   const closeModal = () => {
     setShowModal(false)
+    setReload(true)
   }
 
   const deleteEntry = async (productId) => {
     try {
-      await axios.delete(`http://localhost:7000/api/v1/product/delete-product/${productId}`)
+      setLoading(true)
+      await myAxios.delete(`/product/delete-product/${productId}`)
     } catch (error) {
       console.error(error)
     }
+    setReload(true)
+    setLoading(false)
   }
 
   const updateProduct = (item) => {
@@ -44,6 +59,8 @@ export default function AddProduct() {
   }
 
   return (
+    <>
+    {loading && <ApiLoader /> }
     <div className='add-product-container'>
       <div className='add-product-inner-container'>
 
@@ -64,5 +81,6 @@ export default function AddProduct() {
       </div>
       {showModal && <Modal closeModal={closeModal} productEditable={productEditable} />}
     </div>
+    </>
   )
 }

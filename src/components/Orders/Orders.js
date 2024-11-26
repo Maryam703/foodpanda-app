@@ -1,46 +1,70 @@
 import React, { useEffect, useState } from 'react';
 import "./Orders.css";
 import Table from '../Table/Table';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import myAxios from '../../MyAxios';
+import ApiLoader from '../../ApiLoader/ApiLoader';
 
 export default function Orders() {
     const [orders, setOrders] = useState([])
-    const { shopId } = useParams()
-
-    useEffect(()=> {
-        let fetchingData = async() => {
-          let res = await axios.get(`http://localhost:7000/api/v1/orders/get-all-orders/${shopId}`);
-          setOrders(res.data.orders)
-        }
+    const [loading, setLoading] = useState(false)
+    const [reload, setReload] = useState(false)
     
-        fetchingData()
-      }, [])
+    useEffect(() => {
+        let fetchingData = async() => {
+            try {
+                setLoading(true)
+                let res = await myAxios.get("/order/get-all-orders");
+                let { orders } = res.data;
+                let allPendingOrders = orders.filter((order) => order.riderId === null)
 
-    const deleteEntry = (Id) => {
-        let filteredOrders = orders.filter((order) => order.id !== Id);
-        setOrders(filteredOrders)
+                setOrders(allPendingOrders)
+            } catch (error) {
+                console.error(error)
+            }
+            setLoading(false)
+            setReload(false)
+        }
+        fetchingData()
+    }, [reload])
+
+    const pickOrderHandler = async (itemId) => {
+        try {
+            let user = JSON.parse(localStorage.getItem("user"))
+            const dataForUpdate = {
+                riderId: user?._id,
+                status: "picked"
+            }
+            let res = await myAxios.patch(`/order/update-order/${itemId}`, dataForUpdate);
+            let { updatedOrder } = res.data;
+            console.log(updatedOrder);
+            setReload(true)
+        } catch (error) {
+            console.error(error)
+        }
     }
 
-    const tableHeadings = ["Id", "ProductName", "Image", "Price", "Quantity", "Order Name", "Adress", "Instruction", "Status", "Delete"]
-
+    const tableHeadings = ["Id", "Shop Name", "Order Name",  "Adress", "Contact", "Price", "Order Details", "Status", "Pick"]
+    
     return (
-        <div className='orders-container'>
-            <div className='orders-inner-container'>
+        <>
+        {loading && <ApiLoader />}
+        <div className='rider-order-container'>
+            <div className='rider-order-inner-container'>
 
-                <div className='orders-header'>
-                    <h1>Orders</h1>
+                <div className='rider-order-header'>
+                    <h1>All Orders</h1>
                 </div>
 
-                <div className='orders-table-container'>
+                <div className='rider-order-table-container'>
                     <Table
                         tableHeadings={tableHeadings}
                         tableData={orders}
-                        deleteEntry={deleteEntry}
+                        pickOrderHandler={pickOrderHandler}
                     />
                 </div>
 
             </div>
         </div>
+        </>
     )
 }

@@ -5,6 +5,8 @@ import myAxios from '../../MyAxios'
 
 export default function Restaurant() {
   const [restaurants, setRestaurants] = useState([])
+  const [shopName, setShopName] = useState("")
+
 
   useEffect(() => {
     const fetchingData = async() => {
@@ -19,13 +21,21 @@ export default function Restaurant() {
     }
     fetchingData()
   }, [])
-  
 
+  const searchShopHandler = async() => {
+    try {
+      const res = await myAxios.get(`/shop/search-shop?keyword=${shopName}`)
+      setRestaurants(res.data.shop)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  
   return (
     <div>
       <div className='restaurant-search-bar'>
-        <input placeholder='Search for a Restaurants' />
-        <button>Search</button>
+        <input placeholder='Search for a Restaurants' value={shopName} onChange={(e) => setShopName(e.target.value)}/>
+        <button onClick={searchShopHandler}>Search</button>
       </div>
 
       <div className='restaurant-container--box'>

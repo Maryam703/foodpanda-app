@@ -44,9 +44,37 @@ td{
   font-size: 12px;
   font-weight: 500;
 }
+.table-details-btn{
+  width: 74px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid  rgb(215, 15, 100);
+  color: rgb(215, 15, 100);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.table-details-btn:hover{
+  color: white;
+  border: 1px solid  rgb(215, 15, 100);
+  background-color: rgb(215, 15, 100);
+}
 .table-edit-btn:hover{
   background-color: white;
   color: green;
+}
+.table-status-btn{
+  width: auto;
+  height: 25px;
+  color: white;
+  background-color: green;
+  border: 1px solid  green;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 12px;
 }
 .table-status-selector{
   width: auto;
