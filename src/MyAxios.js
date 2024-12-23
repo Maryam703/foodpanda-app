@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const myAxios = axios.create({baseURL:"http://localhost:8000/api/v1"})
+const myAxios = axios.create({baseURL:"https://foodpanda-backend.vercel.app/"})
 // Add a request interceptor
 myAxios.interceptors.request.use(function (config) {
     let user = JSON.parse(localStorage.getItem("user"))
