@@ -3,7 +3,6 @@ import "./Restaurant-Items.css";
 import FoodItemCard from '../FoodItemCard/FoodItemCard'
 import { useParams } from 'react-router-dom';
 import myAxios from '../../MyAxios';
-import axios from 'axios';
 
 export default function RestaurantItems() {
   const [shop, setShop] = useState(null)
@@ -14,7 +13,7 @@ export default function RestaurantItems() {
     useEffect(() => {
       const fetchingData = async() => {
         try {
-        let res = await axios.get(`http://localhost:9000/api/v1/shop/get-shop/${id}`);
+        let res = await myAxios.get(`/shop/get-shop/${id}`);
         let { shop } = res.data;
         setShop(shop)
   

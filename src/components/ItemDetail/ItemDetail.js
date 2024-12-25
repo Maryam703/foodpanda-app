@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import "./ItemDetail.css";
 import FoodItemCard from '../FoodItemCard/FoodItemCard';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 import myAxios from '../../MyAxios';
 
 export default function ItemDetail() {
@@ -15,7 +14,7 @@ export default function ItemDetail() {
     useEffect(() => {
         const fetchingData = async () => {
             try {
-                let res = await axios.get(`http://localhost:9000/api/v1/product/get-product/${id}`)
+                let res = await myAxios.get(`/product/get-product/${id}`)
                 let { product } = res.data;
                 setItemDetail(product)
 
