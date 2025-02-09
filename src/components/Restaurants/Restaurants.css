@@ -39,3 +39,60 @@
     flex-wrap: wrap;
     margin-top: 2vh;
 }
+
+@media screen and (max-width : 1150px) {
+    .restaurant-search-bar>input{
+        width: 54%;
+    }
+    .restaurant-search-bar>button{
+        width: 6%;
+    }
+}
+@media screen and (max-width : 950px) {
+    .restaurant-search-bar>input{
+        width: 58%;
+    }
+    .restaurant-search-bar>button{
+        width: 7.5%;
+    }
+}
+@media screen and (max-width : 760px) {
+    .restaurant-search-bar>input{
+        width: 62%;
+    }
+    .restaurant-search-bar>button{
+        width: 8.5%;
+    }
+}
+@media screen and (max-width : 600px) {
+    .restaurant-search-bar>input{
+        width: 66%;
+    }
+    .restaurant-search-bar>button{
+        width: 10%;
+    }
+}
+@media screen and (max-width : 520px) {
+    .restaurant-search-bar>input{
+        width: 68%;
+    }
+    .restaurant-search-bar>button{
+        width: 12%;
+    }
+}
+@media screen and (max-width : 420px) {
+    .restaurant-search-bar>input{
+        width: 70%;
+    }
+    .restaurant-search-bar>button{
+        width: 14%;
+    }
+}
+@media screen and (max-width : 360px) {
+    .restaurant-search-bar>input{
+        width: 70%;
+    }
+    .restaurant-search-bar>button{
+        width: 15%;
+    }
+}

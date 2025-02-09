@@ -122,3 +122,75 @@
 .header-logout-btn:hover{
     font-size: 22px;
 }
+
+@media screen and (max-width : 650px) {
+    .header {
+        font-size: 20px;
+    }
+    .header-btn {
+        margin-left: 20px;
+        height: 40px;
+        width: 120px;
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+    .header-2 {
+        font-size: 18px;
+    }
+    .header-2-btn {
+        margin-left: 20px;
+        width: 130px;
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+}
+@media screen and (max-width : 650px) {
+    .header {
+        font-size: 20px;
+    }
+    .header-btn {
+        margin-left: 20px;
+        height: 40px;
+        width: 120px;
+    }
+    .header-2 {
+        font-size: 18px;
+    }
+    .header-2-btn {
+        margin-left: 20px;
+        width: 130px;
+    }
+}
+@media screen and (max-width : 560px) {
+    .header {
+        font-size: 18px;
+    }
+    .header-btn {
+        margin-left: 18px;
+        width: 100px;
+    }
+    .header-2 {
+        font-size: 17px;
+    }
+    .header-2-btn {
+        margin-left: 18px;
+        width: 120px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width : 502px) {
+    .header {
+        font-size: 18px;
+    }
+    .header-btn {
+        margin-left: 18px;
+        width: 100px;
+    }
+    .header-2 {
+        font-size: 17px;
+    }
+    .header-2-btn {
+        margin-left: 18px;
+        width: 120px;
+    }
+}

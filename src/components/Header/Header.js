@@ -73,7 +73,6 @@ export default function Header() {
     setReload(true)
   }
 
-
   return (
     <>
       {loading && <ApiLoader />}
