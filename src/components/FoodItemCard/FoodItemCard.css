@@ -78,3 +78,39 @@
     padding-left: 2%;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+@media screen and (max-width: 1150px) {
+    .food-item-card {
+        width: 24%;
+    }
+}
+@media screen and (max-width: 1050px) {
+    .food-item-card {
+        width: 28%;
+    }
+}
+@media screen and (max-width: 880px) {
+    .food-item-card {
+        width: 32%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .food-item-card {
+        width: 36%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .food-item-card {
+        width: 40%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .food-item-card {
+        width: 45%;
+    }
+}
+@media screen and (max-width< 400px) {
+    .food-item-card {
+        width: 50%;
+    }
+}

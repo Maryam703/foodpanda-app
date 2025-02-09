@@ -75,3 +75,54 @@ input::-webkit-inner-spin-button {
     margin-top: 4%;
     margin-bottom: 2%;
 }
+
+@media screen and (max-width : 1250px) {
+    .signup-login-container>div{
+        width: 33%;
+    }
+}
+@media screen and (max-width : 1150px) {
+    .signup-login-container>div{
+        width: 36%;
+    }
+}
+@media screen and (max-width : 1050px) {
+    .signup-login-container>div{
+        width: 40%;
+    }
+}
+@media screen and (max-width : 950px) {
+    .signup-login-container>div{
+        width: 45%;
+    }
+}
+@media screen and (max-width : 850px) {
+    .signup-login-container>div{
+        width: 50%;
+    }
+}
+@media screen and (max-width : 750px) {
+    .signup-login-container>div{
+        width: 58%;
+    }
+}
+@media screen and (max-width : 650px) {
+    .signup-login-container>div{
+        width: 65%;
+    }
+}
+@media screen and (max-width : 550px) {
+    .signup-login-container>div{
+        width: 72%;
+    }
+}
+@media screen and (max-width : 450px) {
+    .signup-login-container>div{
+        width: 80%;
+    }
+}
+@media screen and (max-width < 400px) {
+    .signup-login-container>div{
+        width: 90%;
+    }
+}

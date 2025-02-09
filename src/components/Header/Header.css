@@ -144,26 +144,10 @@
         padding-left: 2%;
     }
 }
-@media screen and (max-width : 650px) {
-    .header {
-        font-size: 20px;
-    }
-    .header-btn {
-        margin-left: 20px;
-        height: 40px;
-        width: 120px;
-    }
-    .header-2 {
-        font-size: 18px;
-    }
-    .header-2-btn {
-        margin-left: 20px;
-        width: 130px;
-    }
-}
 @media screen and (max-width : 560px) {
     .header {
         font-size: 18px;
+        padding-right: 10px;
     }
     .header-btn {
         margin-left: 18px;
@@ -177,6 +161,24 @@
         width: 120px;
         font-size: 12px;
     }
+    .auth-header-user-adress {
+        font-weight: 400;
+        font-size: 16px;
+    }
+    .auth-header-user-city {
+        font-size: 14px;
+    }
+    .header-logout-btn {
+        width: 40px;
+        height: 28px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .header-icon {
+    margin-left: 18px;
+    font-size: 26px;
+    margin-right: 8px;
+}
 }
 @media screen and (max-width : 502px) {
     .header {

@@ -64,3 +64,61 @@
     justify-content: center;
     padding-top: 0.5%;
 }
+
+
+@media screen and (max-width : 1150px) {
+    .shopItem-search-bar>input{
+        width: 54%;
+    }
+    .shopItem-search-bar>button{
+        width: 6%;
+    }
+}
+@media screen and (max-width : 950px) {
+    .shopItem-search-bar>input{
+        width: 58%;
+    }
+    .shopItem-search-bar>button{
+        width: 7.5%;
+    }
+}
+@media screen and (max-width : 760px) {
+    .shopItem-search-bar>input{
+        width: 62%;
+    }
+    .shopItem-search-bar>button{
+        width: 8.5%;
+    }
+}
+@media screen and (max-width : 600px) {
+    .shopItem-search-bar>input{
+        width: 66%;
+    }
+    .shopItem-search-bar>button{
+        width: 10%;
+    }
+}
+@media screen and (max-width : 520px) {
+    .shopItem-search-bar>input{
+        width: 68%;
+    }
+    .shopItem-search-bar>button{
+        width: 12%;
+    }
+}
+@media screen and (max-width : 420px) {
+    .shopItem-search-bar>input{
+        width: 70%;
+    }
+    .shopItem-search-bar>button{
+        width: 14%;
+    }
+}
+@media screen and (max-width : 360px) {
+    .shopItem-search-bar>input{
+        width: 70%;
+    }
+    .shopItem-search-bar>button{
+        width: 15%;
+    }
+}
